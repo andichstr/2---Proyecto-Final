@@ -75,16 +75,19 @@ productosRouter.delete('/:id', soloAdmins, async (req, res) => {
 const carritosRouter = new Router()
 
 carritosRouter.get('/', async (req, res) => {
-    carritosApi.listarAll();
+    const response = carritosApi.listarAll();
+    res.send(response);
 })
 
 carritosRouter.post('/', async (req, res) => {
-    carritosApi.guardar();
+    const response = carritosApi.guardar();
+    res.send(response);
 })
 
 carritosRouter.delete('/:id', async (req, res) => {
     const id = req.params.id;
-    carritosApi.borrar(parseInt(id));
+    const response = carritosApi.borrar(parseInt(id));
+    res.send(response);
 })
 
 //--------------------------------------------------
@@ -92,17 +95,20 @@ carritosRouter.delete('/:id', async (req, res) => {
 
 carritosRouter.get('/:id/productos', async (req, res) => {
     const id = req.params.id;
-    carritosApi.listar(id);
+    const response = carritosApi.listar(id);
+    res.send(response);
 })
 
 carritosRouter.post('/:id/productos', async (req, res) => {
     const carrito = req.body;
-    carritosApi.actualizarProductos(carrito);
+    const response = carritosApi.actualizarProductos(carrito);
+    res.send(response);
 })
 
 carritosRouter.delete('/:id/productos/:idProd', async (req, res) => {
     const id = req.params.idProd;
-    carritosApi.borrarProducto(id);
+    const response = carritosApi.borrarProducto(id);
+    res.send(response);
 
 })
 
